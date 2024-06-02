@@ -1,0 +1,65 @@
+{
+  "name": "noti",
+  "version": "0.1.0",
+  "description": "An app for managing GitHub notifications",
+  "main": "./out/main/index.js",
+  "author": "tmns",
+  "license": "MIT",
+  "homepage": "https://github.com/tmns/noti",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "build": "npm run typecheck && electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:unpack": "npm run build && electron-builder --dir",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "electron-vite build && electron-builder --mac",
+    "build:linux": "electron-vite build && electron-builder --linux"
+  },
+  "build": {
+    "mac": {
+      "extendInfo": {
+        "LSUIElement": 1
+      }
+    }
+  },
+  "dependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@solid-primitives/date": "^2.1.0",
+    "@solidjs/router": "^0.15.3",
+    "clsx": "^2.1.1",
+    "javascript-time-ago": "^2.5.11",
+    "menubar": "^9.5.1",
+    "ncrypt-js": "^2.1.2",
+    "octokit": "^4.1.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@octokit/types": "^13.7.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/electron-store": "^3.2.2",
+    "@types/node": "^22.12.0",
+    "electron": "^34.0.1",
+    "electron-builder": "^25.1.8",
+    "electron-updater": "^6.3.9",
+    "electron-vite": "^2.3.0",
+    "postcss-loader": "^8.1.1",
+    "prettier": "^3.4.2",
+    "solid-js": "^1.9.4",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vite-plugin-solid": "^2.11.0",
+    "vite-plugin-solid-svg": "^0.8.1"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}
